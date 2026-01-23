@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Opexis Digital – Assistente AI Twynet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background: #020617;
+        color: #e5e7eb;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        padding: 10px 14px;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #9ca3af;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header .brand {
+        color: #f9fafb;
+      }
+
+      header .brand span {
+        color: #004aad; /* blu Opexis */
+      }
+
+      .app-wrapper {
+        position: relative;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .frame-9-16 {
+        position: relative;
+        width: 100vw;
+        max-width: 540px;
+        aspect-ratio: 9 / 16;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+        background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      }
+
+      /* Avatar a TUTTO schermo dentro il frame */
+      #heygen-streaming-embed {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      #heygen-streaming-embed.show {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.2s ease-out;
+      }
+
+      #heygen-streaming-container,
+      #heygen-streaming-container iframe {
+        width: 100% !important;
+        height: 100% !important;
+        border: 0 !important;
+      }
+
+      .hint-mobile {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #9ca3af;
+        pointer-events: none;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="brand">OPE<span>XIS</span> · AI Twynet</div>
+      <div class="hint">Assistente digitale Opexis</div>
+    </header>
+
+    <div class="app-wrapper">
+      <div class="frame-9-16">
+        <div class="hint-mobile">
+          Suggerimento: usa auricolari in ambiente tranquillo per una migliore qualità audio.
+        </div>
+      </div>
+    </div>
+
+    <!-- Script HeyGen con avatar Opexis -->
+    <script>
+      !function(window){const host="https://labs.heygen.com",url=host+"/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJHcmFoYW1fUHJvZmVzc2lvbmFsTG9vazJf%0D%0AcHVibGljIiwicHJldmlld0ltZyI6Imh0dHBzOi8vZmlsZXMyLmhleWdlbi5haS9hdmF0YXIvdjMv%0D%0AZmY1MGY4NzRkODIxNDAwY2JhZWZkZTlmZjkyYjZhNzNfNTU4NTAvcHJldmlld190YWxrXzEud2Vi%0D%0AcCIsIm5lZWRSZW1vdmVCYWNrZ3JvdW5kIjp0cnVlLCJrbm93bGVkZ2VCYXNlSWQiOiIwN2FjZTY4%0D%0AYjMxZmU0MDM1OTFkZDRjZGNhOTM4ZDY5ZiIsInVzZXJuYW1lIjoiZmI0MGNkYjU2N2VmNGMxODkw%0D%0AMzg0OTA4MjljMjBlNmYifQ%3D%3D&inIFrame=1",clientWidth=document.body.clientWidth,wrapDiv=document.createElement("div");wrapDiv.id="heygen-streaming-embed";const container=document.createElement("div");container.id="heygen-streaming-container";const stylesheet=document.createElement("style");stylesheet.innerHTML=`\n  #heygen-streaming-embed {\n    z-index: 9999;\n    position: fixed;\n    left: 40px;\n    bottom: 40px;\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    border: 2px solid #fff;\n    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12);\n    transition: all linear 0.1s;\n    overflow: hidden;\n\n    opacity: 0;\n    visibility: hidden;\n  }\n  #heygen-streaming-embed.show {\n    opacity: 1;\n    visibility: visible;\n  }\n  #heygen-streaming-embed.expand {\n    ${clientWidth<540?"height: 266px; width: 96%; left: 50%; transform: translateX(-50%);":"height: 366px; width: calc(366px * 16 / 9);"}\n    border: 0;\n    border-radius: 8px;\n  }\n  #heygen-streaming-container {\n    width: 100%;\n    height: 100%;\n  }\n  #heygen-streaming-container iframe {\n    width: 100%;\n    height: 100%;\n    border: 0;\n  }\n  `;const iframe=document.createElement("iframe");iframe.allowFullscreen=!1,iframe.title="Streaming Embed",iframe.role="dialog",iframe.allow="microphone",iframe.src=url;let visible=!1,initial=!1;window.addEventListener("message",(e=>{e.origin===host&&e.data&&e.data.type&&"streaming-embed"===e.data.type&&("init"===e.data.action?(initial=!0,wrapDiv.classList.toggle("show",initial)):"show"===e.data.action?(visible=!0,wrapDiv.classList.toggle("expand",visible)):"hide"===e.data.action&&(visible=!1,wrapDiv.classList.toggle("expand",visible)))})),container.appendChild(iframe),wrapDiv.appendChild(stylesheet),wrapDiv.appendChild(container);document.body.appendChild(wrapDiv);const frame=document.querySelector('.frame-9-16');if(frame){frame.appendChild(wrapDiv);}}(globalThis);
+    </script>
+  </body>
+</html>
