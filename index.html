@@ -20,7 +20,6 @@ body{
   justify-content:center;
   align-items:center;
 }
-
 body::before{
   content:"";
   position:fixed;
@@ -43,23 +42,15 @@ body::before{
   z-index:1;
 }
 
-header{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+header{display:flex;align-items:center;gap:10px}
 .logo{
   width:42px;height:42px;border-radius:50%;
   background:var(--blue);
   display:flex;align-items:center;justify-content:center;
   font-weight:800;
 }
-header div span:first-child{
-  font-size:14px;font-weight:700;letter-spacing:.08em;
-}
-header div span:last-child{
-  font-size:11px;color:#c2d4ff;
-}
+header div span:first-child{font-size:14px;font-weight:700;letter-spacing:.08em}
+header div span:last-child{font-size:11px;color:#c2d4ff}
 
 /* CONTATTO */
 .card{
@@ -68,50 +59,26 @@ header div span:last-child{
   border-radius:18px;
   padding:12px;
 }
-.card h2{
-  font-size:14px;margin-bottom:6px;
-}
-.card .meta{
-  font-size:12px;margin-bottom:10px;
-}
+.card h2{font-size:14px;margin-bottom:6px}
+.card .meta{font-size:12px;margin-bottom:10px}
 .card a{color:#d1e3ff;text-decoration:none}
 
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  justify-content:center;
-}
+.actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .btn{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:8px 14px;
-  border-radius:999px;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px;border-radius:999px;
   border:1px solid var(--line);
   background:rgba(2,6,23,.6);
-  color:#fff;
-  font-size:12px;
-  text-decoration:none;
+  color:#fff;font-size:12px;text-decoration:none;
   cursor:pointer;
 }
-.dot{
-  width:9px;height:9px;border-radius:50%;
-  background:#fff;
-}
+.dot{width:9px;height:9px;border-radius:50%;background:#fff}
 
 /* HERO */
-.hero{
-  text-align:center;
-}
-.hero h1{
-  font-size:24px;
-  margin:6px 0;
-}
+.hero{text-align:center}
+.hero h1{font-size:24px;margin:6px 0}
 .hero h1 span{color:var(--blue)}
-.hero p{
-  font-size:13px;color:#d1e3ff;
-}
+.hero p{font-size:13px;color:#d1e3ff}
 
 /* VIDEO */
 .video-box{
@@ -120,50 +87,26 @@ header div span:last-child{
   overflow:hidden;
   margin:8px 0;
 }
-video{
-  width:100%;
-  display:block;
-}
-.video-controls{
-  display:flex;
-}
+video{width:100%;display:block}
+.video-controls{display:flex}
 .video-controls button{
   flex:1;
-  padding:10px;
-  border:none;
-  background:#111;
-  color:#fff;
-  font-size:12px;
-  cursor:pointer;
+  padding:10px;border:none;
+  background:#111;color:#fff;
+  font-size:12px;cursor:pointer;
 }
 
 /* CTA AI */
 .cta a{
-  display:block;
-  width:100%;
-  padding:14px;
-  text-align:center;
+  display:block;width:100%;
+  padding:14px;text-align:center;
   border-radius:999px;
   background:linear-gradient(135deg,var(--blue),#001a4f);
-  color:#fff;
-  font-weight:700;
-  text-decoration:none;
+  color:#fff;font-weight:700;text-decoration:none;
 }
 
-/* SOCIAL */
-.socials{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-footer{
-  margin-top:auto;
-  text-align:center;
-  font-size:10px;
-  color:#94a3b8;
-}
+.socials{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+footer{margin-top:auto;text-align:center;font-size:10px;color:#94a3b8}
 </style>
 </head>
 
@@ -178,7 +121,6 @@ footer{
   </div>
 </header>
 
-<!-- CONTATTO -->
 <section class="card">
   <h2>Andrea Scaratti</h2>
   <div class="meta">
@@ -189,24 +131,23 @@ footer{
   <div class="actions">
     <a class="btn" href="tel:+393890648451"><span class="dot"></span>Chiama</a>
     <a class="btn" href="mailto:scarattibusiness@gmail.cpm"><span class="dot"></span>Email</a>
-    <a class="btn" href="https://www.facebook.com/share/17w4WHL7W6/" target="_blank"><span class="dot"></span>Facebook</a>
-    <a class="btn" href="https://www.instagram.com/scarattiandrea?utm_source=qr&igsh=N3hhMjRxOHFxNTh2" target="_blank"><span class="dot"></span>Instagram</a>
+    <a class="btn" href="https://www.facebook.com/share/17w4WHL7W6/" target="_blank" rel="noopener"><span class="dot"></span>Facebook</a>
+    <a class="btn" href="https://www.instagram.com/scarattiandrea?utm_source=qr&igsh=N3hhMjRxOHFxNTh2" target="_blank" rel="noopener"><span class="dot"></span>Instagram</a>
     <button class="btn" onclick="saveContact()"><span class="dot"></span>Salva in rubrica</button>
   </div>
 </section>
 
-<!-- HERO -->
 <section class="hero">
   <h1>Il marketing <span>con AI</span></h1>
 
-  <!-- VIDEO CON AUDIO -->
   <div class="video-box">
-    <video id="introVideo" autoplay playsinline>
+    <!-- ✅ Autoplay avviene solo se muted -->
+    <video id="introVideo" autoplay muted playsinline preload="auto">
       <source src="video_intro.mp4" type="video/mp4">
     </video>
 
     <div class="video-controls">
-      <button onclick="enableAudio()">🔊 Attiva audio</button>
+      <button id="audioBtn" onclick="enableAudio()">🔊 Attiva audio</button>
       <button onclick="stopVideo()">⏹ Stop</button>
     </div>
   </div>
@@ -214,16 +155,14 @@ footer{
   <p>Scopri Twynet: social professionale, AI, formazione e opportunità di business.</p>
 </section>
 
-<!-- CTA AI -->
 <section class="cta">
   <a href="ai.html">💬 Parla con l’AI</a>
 </section>
 
-<!-- SOCIAL OPEXIS -->
 <section class="socials">
-  <a class="btn" href="https://www.instagram.com/opexis.digital/" target="_blank"><span class="dot"></span>Opexis IG</a>
-  <a class="btn" href="https://www.facebook.com/profile.php?id=61580851595121" target="_blank"><span class="dot"></span>Opexis FB</a>
-  <a class="btn" href="https://www.linkedin.com/company/opexis/" target="_blank"><span class="dot"></span>LinkedIn</a>
+  <a class="btn" href="https://www.instagram.com/opexis.digital/" target="_blank" rel="noopener"><span class="dot"></span>Opexis IG</a>
+  <a class="btn" href="https://www.facebook.com/profile.php?id=61580851595121" target="_blank" rel="noopener"><span class="dot"></span>Opexis FB</a>
+  <a class="btn" href="https://www.linkedin.com/company/opexis/" target="_blank" rel="noopener"><span class="dot"></span>LinkedIn</a>
 </section>
 
 <footer>
@@ -236,20 +175,57 @@ footer{
 document.getElementById("year").textContent = new Date().getFullYear();
 
 const video = document.getElementById("introVideo");
+const audioBtn = document.getElementById("audioBtn");
+
+let audioUnlocked = false;
+
+/**
+ * ✅ Questa è la soluzione "massima":
+ * - autoplay parte MUTED
+ * - al primo tocco/click/scroll: si smuta e l'audio parte
+ *   (iOS/Android lo permettono solo dopo una gesture utente)
+ */
+async function unlockAudioOnce(){
+  if (audioUnlocked) return;
+  audioUnlocked = true;
+
+  try{
+    video.muted = false;
+    video.volume = 1;
+
+    // riprova play dopo gesture
+    const p = video.play();
+    if (p && typeof p.catch === "function") await p.catch(()=>{});
+  }catch(e){}
+
+  if (audioBtn) audioBtn.textContent = "🔊 Audio attivo";
+}
 
 function enableAudio(){
-  video.muted = false;
-  video.volume = 1;
-  video.play();
+  // anche qui: serve gesto utente (è un click, quindi ok)
+  unlockAudioOnce();
 }
 
 function stopVideo(){
   video.pause();
   video.currentTime = 0;
+
+  // opzionale: quando stoppi, rimetti muted per permettere autoplay al reload
+  // video.muted = true;
+  // audioUnlocked = false;
+  // if (audioBtn) audioBtn.textContent = "🔊 Attiva audio";
 }
 
+/* ✅ Sblocca audio al primo gesto su pagina */
+["pointerdown","touchstart","click","scroll"].forEach(evt=>{
+  window.addEventListener(evt, unlockAudioOnce, { passive:true, once:true });
+});
+
+</script>
+
+<script>
 function saveContact(){
-const vcf=`BEGIN:VCARD
+  const vcf=`BEGIN:VCARD
 VERSION:3.0
 FN:Andrea Scaratti
 N:Scaratti;Andrea;;;
@@ -259,14 +235,15 @@ URL:https://www.facebook.com/share/17w4WHL7W6/
 X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/scarattiandrea?utm_source=qr&igsh=N3hhMjRxOHFxNTh2
 END:VCARD`;
 
-const blob=new Blob([vcf],{type:"text/vcard"});
-const url=URL.createObjectURL(blob);
-const a=document.createElement("a");
-a.href=url;a.download="andrea-scaratti.vcf";
-document.body.appendChild(a);
-a.click();
-a.remove();
-URL.revokeObjectURL(url);
+  const blob=new Blob([vcf],{type:"text/vcard;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="andrea-scaratti.vcf";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
 }
 </script>
 
