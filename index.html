@@ -14,7 +14,6 @@
 
     *{box-sizing:border-box;margin:0;padding:0}
 
-    /* === SFONDO PAGINA (PNG 9:16) === */
     body{
       font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       min-height:100vh;
@@ -22,7 +21,6 @@
       justify-content:center;
       align-items:center;
       padding:12px;
-
       background-image:url("13.png");
       background-size:cover;
       background-position:center;
@@ -30,7 +28,6 @@
       background-attachment:fixed;
     }
 
-    /* overlay per leggibilità */
     body::before{
       content:"";
       position:fixed;
@@ -53,18 +50,6 @@
       overflow:hidden;
       z-index:1;
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .phone-frame::before{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(0,74,173,.25), transparent 60%),
-        radial-gradient(circle at 90% 100%, rgba(0,74,173,.18), transparent 60%);
-      opacity:.9;
-      pointer-events:none;
     }
 
     .content{
@@ -74,7 +59,6 @@
       flex-direction:column;
       height:100%;
       gap:14px;
-      justify-content:flex-start;
     }
 
     header{
@@ -89,15 +73,8 @@
       background:var(--opexis-blue);
       display:flex;align-items:center;justify-content:center;
       color:#fff;font-weight:800;font-size:18px;
-      box-shadow:0 0 14px rgba(0,74,173,.55);
-      flex-shrink:0;
     }
 
-    .logo-text{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
     .logo-text span:first-child{
       font-size:15px;
       letter-spacing:.08em;
@@ -110,249 +87,68 @@
       color:#c2d4ff;
     }
 
-    /* === CONTATTI (NUOVO) === */
     .contact-card{
       border-radius:18px;
       border:1px solid rgba(148,163,184,.20);
       background:rgba(2,6,23,.55);
-      padding:12px 12px 10px;
-      box-shadow:0 12px 26px rgba(0,0,0,.28);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      padding:12px;
       color:#e5edff;
     }
+
     .contact-title{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:10px;
       margin-bottom:8px;
     }
+
     .contact-title h2{
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:.02em;
+      font-size:14px;
       color:#fff;
+      font-weight:800;
     }
-    .contact-badge{
-      font-size:10px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      color:#c2d4ff;
-      border:1px solid rgba(148,163,184,.25);
-      padding:4px 8px;
-      border-radius:999px;
-      background:rgba(2,8,23,.35);
-    }
+
     .contact-meta{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      font-size:11px;
-      color:#d1e3ff;
+      font-size:12px;
       margin-bottom:10px;
     }
+
     .contact-meta a{
       color:#d1e3ff;
       text-decoration:none;
-      border-bottom:1px dotted rgba(209,227,255,.35);
     }
+
     .contact-actions{
       display:flex;
-      gap:10px;
-      justify-content:center;
-      align-items:center;
       flex-wrap:wrap;
-    }
-
-    .hero{
-      display:flex;
-      flex-direction:column;
-      text-align:center;
-      gap:10px;
-      color:#fff;
-      padding:4px 4px 0;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:4px 10px;
-      border-radius:999px;
-      background:rgba(2,6,23,.55);
-      border:1px solid rgba(148,163,184,.35);
-      font-size:10px;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      margin:0 auto 4px;
-      color:#e5edff;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-    .tag-dot{
-      width:7px;height:7px;border-radius:50%;
-      background:#22c55e;
-      box-shadow:0 0 10px rgba(34,197,94,.8);
-    }
-
-    h1{
-      font-size:26px;
-      line-height:1.15;
-      margin-bottom:2px;
-    }
-    h1 span{color:var(--opexis-blue);}
-
-    /* === VIDEO BOX (sotto il titolo) === */
-    .video-box{
-      margin:10px auto 6px;
-      width:100%;
-      max-width:320px;
-      background:rgba(0,0,0,.35);
-      border-radius:16px;
-      padding:8px;
-      box-shadow:0 12px 30px rgba(0,0,0,.4);
-      border:1px solid rgba(148,163,184,.25);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-    .video-box video{
-      width:100%;
-      border-radius:12px;
-      display:block;
-      outline:none;
-      background:#000;
-    }
-    .video-stop{
-      margin-top:8px;
-      width:100%;
-      border:none;
-      border-radius:999px;
-      padding:9px 12px;
-      font-size:12px;
-      font-weight:700;
-      cursor:pointer;
-      background:linear-gradient(135deg, #1e293b, #020617);
-      color:#fff;
-      box-shadow:0 8px 18px rgba(0,0,0,.45);
-      letter-spacing:.02em;
-    }
-    .video-stop:active{
-      transform:translateY(1px);
-      box-shadow:0 6px 14px rgba(0,0,0,.45);
-    }
-
-    .subtitle{
-      font-size:13px;
-      line-height:1.4;
-      color:#d1e3ff;
-      max-width:290px;
-      margin:0 auto;
-    }
-
-    .highlights{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-      margin-top:10px;
-      font-size:11px;
-      color:#e2e8f0;
-    }
-    .highlights span{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      justify-content:center;
-    }
-    .bullet-dot{
-      width:6px;height:6px;border-radius:50%;
-      background:rgba(148,163,184,.9);
-    }
-
-    /* === CTA (alzata) === */
-    .cta-wrapper{
-      margin-top:-6px; /* alza il blocco blu */
-      padding-bottom:2px;
-    }
-
-    .cta-button{
-      display:block;
-      width:100%;
-      border:none;
-      border-radius:999px;
-      padding:14px 16px;
-      text-align:center;
-      font-size:14px;
-      font-weight:700;
-      text-decoration:none;
-      background:linear-gradient(135deg, var(--opexis-blue), #001a4f);
-      color:#fff;
-      box-shadow:0 18px 30px rgba(0,74,173,.55);
-      letter-spacing:.03em;
-    }
-    .cta-button:active{
-      transform:translateY(1px);
-      box-shadow:0 12px 20px rgba(0,74,173,.45);
-    }
-
-    .cta-caption{
-      margin-top:6px;
-      font-size:10px;
-      color:#94a3b8;
-      text-align:center;
-    }
-
-    /* === SOCIALS (BOTTONI LINK) === */
-    .socials{
-      margin-top:8px;
-      display:flex;
       gap:10px;
       justify-content:center;
-      align-items:center;
-      flex-wrap:wrap;
     }
+
     .social-link{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding:9px 12px;
+      padding:9px 14px;
       border-radius:999px;
       border:1px solid var(--line);
       background:rgba(2,6,23,.55);
-      color:#e5edff;
+      color:#fff;
       text-decoration:none;
-      font-size:11px;
-      font-weight:650;
-      letter-spacing:.02em;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      box-shadow:0 10px 20px rgba(0,0,0,.25);
+      font-size:12px;
+      font-weight:600;
       cursor:pointer;
     }
-    .social-link:active{transform:translateY(1px)}
+
     .social-dot{
       width:10px;height:10px;border-radius:50%;
-      background:rgba(226,232,240,.9);
-      box-shadow:0 0 10px rgba(226,232,240,.35);
-      flex-shrink:0;
+      background:#fff;
     }
 
     footer{
       margin-top:auto;
-      padding-top:6px;
       text-align:center;
-      font-size:9px;
+      font-size:10px;
       color:#94a3b8;
-    }
-
-    @media (max-width:480px){
-      .phone-frame{
-        border-radius:0;
-        max-width:100%;
-        aspect-ratio:auto;
-        height:100vh;
-      }
-      body{padding:0}
     }
   </style>
 </head>
@@ -360,19 +156,19 @@
 <body>
   <div class="phone-frame">
     <div class="content">
+
       <header>
         <div class="logo-circle">O</div>
         <div class="logo-text">
           <span>Opexis Digital</span>
-          <span>Opportunity Nexus per il marketing relazionale</span>
+          <span>Opportunity Nexus</span>
         </div>
       </header>
 
-      <!-- ✅ CONTATTI INSERITI ALL'INIZIO -->
-      <section class="contact-card" aria-label="Contatti Andrea Scaratti">
+      <!-- CONTATTO -->
+      <section class="contact-card">
         <div class="contact-title">
           <h2>Andrea Scaratti</h2>
-          <span class="contact-badge">Contatti</span>
         </div>
 
         <div class="contact-meta">
@@ -384,147 +180,36 @@
           <a class="social-link" href="tel:+393890648451">
             <span class="social-dot"></span> Chiama
           </a>
+
           <a class="social-link" href="mailto:scarattibusiness@gmail.cpm">
             <span class="social-dot"></span> Email
           </a>
-          <a class="social-link" href="https://www.facebook.com/share/17w4WHL7W6/" target="_blank" rel="noopener">
+
+          <a class="social-link" href="https://www.facebook.com/share/17w4WHL7W6/" target="_blank">
             <span class="social-dot"></span> Facebook
           </a>
-          <a class="social-link" href="https://www.instagram.com/scarattiandrea?utm_source=qr&igsh=N3hhMjRxOHFxNTh2" target="_blank" rel="noopener">
+
+          <a class="social-link" href="https://www.instagram.com/scarattiandrea?utm_source=qr&igsh=N3hhMjRxOHFxNTh2" target="_blank">
             <span class="social-dot"></span> Instagram
           </a>
 
-          <!-- Download CSV per salvare i dati sul telefono -->
-          <button class="social-link" type="button" onclick="downloadCSV()">
-            <span class="social-dot"></span> Salva CSV
+          <!-- SOLO SALVA IN RUBRICA -->
+          <button class="social-link" onclick="downloadVCard()">
+            <span class="social-dot"></span> Salva in rubrica
           </button>
-
-          <!-- Extra utile: vCard (iPhone/Android importano meglio) -->
-          <button class="social-link" type="button" onclick="downloadVCard()">
-            <span class="social-dot"></span> Salva Contatto (VCF)
-          </button>
-        </div>
-      </section>
-
-      <section class="hero">
-        <div class="tag">
-          <span class="tag-dot"></span>
-          <span>Twynet – Social • AI • Blockchain</span>
-        </div>
-
-        <h1>
-          Il social professionale <span>guidato dall’AI</span>
-        </h1>
-
-        <!-- VIDEO INTRO (stesso posto di prima: subito sotto il titolo) -->
-        <div class="video-box">
-          <video
-            id="introVideo"
-            src="video_intro.mp4"
-            autoplay
-            muted
-            playsinline
-            preload="auto"
-          ></video>
-
-          <button class="video-stop" type="button" onclick="stopVideo()">
-            ⏹ Stop video
-          </button>
-        </div>
-
-        <p class="subtitle">
-          Scopri come Twynet unisce social network, marketplace, formazione e
-          marketing relazionale in un’unica piattaforma.
-        </p>
-
-        <div class="highlights">
-          <span><span class="bullet-dot"></span> AI per contenuti, networking e analisi</span>
-          <span><span class="bullet-dot"></span> Marketplace, e-learning e referral integrati</span>
-          <span><span class="bullet-dot"></span> Opportunità per professionisti, aziende e investitori</span>
-        </div>
-      </section>
-
-      <section class="cta-wrapper">
-        <a href="ai.html" class="cta-button">
-          Parla con la nostra AI per ulteriori informazioni
-        </a>
-        <p class="cta-caption">
-          L’assistente virtuale Opexis risponde alle tue domande su Twynet, servizi e opportunità.
-        </p>
-
-        <div class="socials" aria-label="Social Opexis">
-          <a class="social-link" href="https://www.instagram.com/opexis.digital/" target="_blank" rel="noopener">
-            <span class="social-dot"></span> Instagram
-          </a>
-          <a class="social-link" href="https://www.facebook.com/profile.php?id=61580851595121" target="_blank" rel="noopener">
-            <span class="social-dot"></span> Facebook
-          </a>
-          <a class="social-link" href="https://www.linkedin.com/company/opexis/" target="_blank" rel="noopener">
-            <span class="social-dot"></span> LinkedIn
-          </a>
         </div>
       </section>
 
       <footer>
-        © <span id="year"></span> OpexisDigital s.r.l. – https://opexis.digital
+        © <span id="year"></span> Opexis Digital
       </footer>
+
     </div>
   </div>
 
   <script>
-    // Anno automatico nel footer
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Autoplay (alcuni browser ritardano: tento play al load)
-    window.addEventListener("load", () => {
-      const v = document.getElementById("introVideo");
-      if (!v) return;
-      const p = v.play();
-      if (p && typeof p.catch === "function") {
-        p.catch(() => {
-          // Se il browser blocca l'autoplay, il video resta comunque pronto.
-        });
-      }
-    });
-
-    // STOP: ferma e riporta a inizio
-    function stopVideo() {
-      const video = document.getElementById("introVideo");
-      if (!video) return;
-      video.pause();
-      video.currentTime = 0;
-    }
-
-    // ✅ CSV download (per salvare i dati sul telefono)
-    function downloadCSV(){
-      const rows = [
-        ["Nome","Email","Telefono","Facebook","Instagram"],
-        [
-          "Andrea Scaratti",
-          "scarattibusiness@gmail.cpm",
-          "3890648451",
-          "https://www.facebook.com/share/17w4WHL7W6/",
-          "https://www.instagram.com/scarattiandrea?utm_source=qr&igsh=N3hhMjRxOHFxNTh2"
-        ]
-      ];
-
-      const csv = rows
-        .map(r => r.map(v => `"${String(v).replaceAll('"','""')}"`).join(","))
-        .join("\n");
-
-      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "andrea-scaratti.csv";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    }
-
-    // ✅ vCard download (iPhone/Android importano più facilmente in Rubrica)
     function downloadVCard(){
       const vcf =
 `BEGIN:VCARD
@@ -549,5 +234,6 @@ END:VCARD`;
       URL.revokeObjectURL(url);
     }
   </script>
+
 </body>
 </html>
