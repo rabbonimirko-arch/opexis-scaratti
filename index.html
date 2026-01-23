@@ -124,9 +124,12 @@ video{
   width:100%;
   display:block;
 }
-.stop{
-  width:100%;
-  padding:8px;
+.video-controls{
+  display:flex;
+}
+.video-controls button{
+  flex:1;
+  padding:10px;
   border:none;
   background:#111;
   color:#fff;
@@ -135,9 +138,6 @@ video{
 }
 
 /* CTA AI */
-.cta{
-  margin-top:6px;
-}
 .cta a{
   display:block;
   width:100%;
@@ -150,7 +150,7 @@ video{
   text-decoration:none;
 }
 
-/* SOCIAL OPEXIS */
+/* SOCIAL */
 .socials{
   display:flex;
   gap:8px;
@@ -199,15 +199,19 @@ footer{
 <section class="hero">
   <h1>Il marketing <span>con AI</span></h1>
 
-  <!-- VIDEO -->
+  <!-- VIDEO CON AUDIO -->
   <div class="video-box">
-    <video id="introVideo" autoplay muted playsinline>
+    <video id="introVideo" autoplay playsinline>
       <source src="video_intro.mp4" type="video/mp4">
     </video>
-    <button class="stop" onclick="stopVideo()">⏹ Stop video</button>
+
+    <div class="video-controls">
+      <button onclick="enableAudio()">🔊 Attiva audio</button>
+      <button onclick="stopVideo()">⏹ Stop</button>
+    </div>
   </div>
 
-  <p>Scopri Twynet: social professionale, AI, formazione e opportunità di business in un’unica piattaforma.</p>
+  <p>Scopri Twynet: social professionale, AI, formazione e opportunità di business.</p>
 </section>
 
 <!-- CTA AI -->
@@ -231,9 +235,17 @@ footer{
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const video = document.getElementById("introVideo");
+
+function enableAudio(){
+  video.muted = false;
+  video.volume = 1;
+  video.play();
+}
+
 function stopVideo(){
-  const v=document.getElementById("introVideo");
-  v.pause();v.currentTime=0;
+  video.pause();
+  video.currentTime = 0;
 }
 
 function saveContact(){
