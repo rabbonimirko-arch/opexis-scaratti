@@ -191,6 +191,15 @@ footer{
     <a class="btn" href="mailto:scarattibusiness@gmail.cpm"><span class="dot"></span>Email</a>
     <a class="btn" href="https://www.facebook.com/share/17w4WHL7W6/" target="_blank"><span class="dot"></span>Facebook</a>
     <a class="btn" href="https://www.instagram.com/scarattiandrea?utm_source=qr&igsh=N3hhMjRxOHFxNTh2" target="_blank"><span class="dot"></span>Instagram</a>
+
+    <a class="btn" href="https://opexis.digital/?ref=14" target="_blank">
+      <span class="dot"></span>I nostri Servizi
+    </a>
+
+    <a class="btn" href="https://opexis.digital/prodotto/aboutme-ai-card-personalizzazione-nome/?ref=14" target="_blank">
+      <span class="dot"></span>About Me AI Card
+    </a>
+
     <button class="btn" onclick="saveContact()"><span class="dot"></span>Salva in rubrica</button>
   </div>
 </section>
@@ -199,9 +208,8 @@ footer{
 <section class="hero">
   <h1>Il marketing <span>con AI</span></h1>
 
-  <!-- VIDEO CON AUDIO -->
   <div class="video-box">
-    <video id="introVideo" autoplay playsinline>
+    <video id="introVideo" autoplay playsinline muted>
       <source src="video_intro.mp4" type="video/mp4">
     </video>
 
@@ -256,13 +264,16 @@ N:Scaratti;Andrea;;;
 TEL;TYPE=CELL:+393890648451
 EMAIL:scarattibusiness@gmail.cpm
 URL:https://www.facebook.com/share/17w4WHL7W6/
+URL:https://opexis.digital/?ref=14
+URL:https://opexis.digital/prodotto/aboutme-ai-card-personalizzazione-nome/?ref=14
 X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/scarattiandrea?utm_source=qr&igsh=N3hhMjRxOHFxNTh2
 END:VCARD`;
 
 const blob=new Blob([vcf],{type:"text/vcard"});
 const url=URL.createObjectURL(blob);
 const a=document.createElement("a");
-a.href=url;a.download="andrea-scaratti.vcf";
+a.href=url;
+a.download="andrea-scaratti.vcf";
 document.body.appendChild(a);
 a.click();
 a.remove();
