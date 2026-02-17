@@ -14,11 +14,7 @@
       --muted:#94a3b8;
     }
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
 
     html, body{
       width:100%;
@@ -26,11 +22,11 @@
       background:var(--bg);
       color:var(--txt);
       font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      overflow:hidden;
     }
 
+    /* Layout: topbar + iframe full height restante */
     body{
-      min-height:100svh;
+      min-height: 100svh;
       display:flex;
       flex-direction:column;
       padding:
@@ -40,28 +36,25 @@
         env(safe-area-inset-left);
     }
 
-    /* ===== TOP BAR ===== */
     .topbar{
       flex:0 0 auto;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
+
       padding:10px 12px;
       border-bottom:1px solid var(--line);
       background:rgba(2,8,23,.70);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      z-index:20;
     }
 
     .brand{
       display:flex;
       flex-direction:column;
       min-width:0;
-      text-align:center;
     }
-
     .brand .t1{
       font-weight:800;
       letter-spacing:.08em;
@@ -72,7 +65,6 @@
       overflow:hidden;
       text-overflow:ellipsis;
     }
-
     .brand .t2{
       font-size:10px;
       color:var(--muted);
@@ -82,6 +74,7 @@
     }
 
     .btn{
+      flex:0 0 auto;
       border:1px solid var(--line);
       background:rgba(2,6,23,.55);
       color:#fff;
@@ -95,17 +88,12 @@
       gap:8px;
       cursor:pointer;
       user-select:none;
-      white-space:nowrap;
     }
+    .btn:active{ transform:translateY(1px); }
 
-    .btn:active{
-      transform:translateY(1px);
-    }
-
-    /* ===== IFRAME AREA ===== */
     .ai-wrap{
       flex:1 1 auto;
-      min-height:0;
+      min-height:0; /* IMPORTANT: permette all’iframe di riempire senza tagliare */
       position:relative;
       background:#000;
     }
@@ -117,32 +105,28 @@
       height:100%;
       border:0;
       background:#000;
-      z-index:1;
     }
 
-    /* ===== OVERLAY MASCHERA WATERMARK HEYGEN ===== */
-    .heygen-mask{
+    .hint{
       position:absolute;
-      right:0;
-      bottom:0;
-      width:130px;
-      height:52px;
-      background:#000;
-      z-index:5;
+      left:10px;
+      right:10px;
+      bottom:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(2,8,23,.55);
+      border:1px solid rgba(148,163,184,.20);
+      color:#dbeafe;
+      font-size:11px;
+      line-height:1.25;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       pointer-events:none;
-    }
-
-    @media (max-width:768px){
-      .heygen-mask{
-        width:150px;
-        height:60px;
-      }
     }
   </style>
 </head>
 
 <body>
-
   <header class="topbar">
     <a class="btn" href="index.html" aria-label="Torna alla home">← Home</a>
 
@@ -155,7 +139,7 @@
   </header>
 
   <main class="ai-wrap">
-    <!-- IFRAME HEYGEN FULLSCREEN -->
+    <!-- IFRAME FULLSCREEN (HeyGen) -->
     <iframe
       id="aiFrame"
       title="Opexis AI – HeyGen"
@@ -163,24 +147,24 @@
       referrerpolicy="no-referrer"
     ></iframe>
 
-    <!-- MASCHERA WATERMARK HEYGEN -->
-    <div class="heygen-mask" aria-hidden="true"></div>
+   
   </main>
 
   <script>
+    // ✅ Usa lo stesso “share” del tuo ai.html originale, ma in iframe fullscreen
     const host = "https://labs.heygen.com";
-    const share =
-      "eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJHcmFoYW1fUHJvZmVzc2lvbmFsTG9vazJf%0D%0AcHVibGljIiwicHJldmlld0ltZyI6Imh0dHBzOi8vZmlsZXMyLmhleWdlbi5haS9hdmF0YXIvdjMv%0D%0AZmY1MGY4NzRkODIxNDAwY2JhZWZkZTlmZjkyYjZhNzNfNTU4NTAvcHJldmlld190YWxrXzEud2Vi%0D%0AcCIsIm5lZWRSZW1vdmVCYWNrZ3JvdW5kIjp0cnVlLCJrbm93bGVkZ2VCYXNlSWQiOiIwN2FjZTY4%0D%0AYjMxZmU0MDM1OTFkZDRjZGNhOTM4ZDY5ZiIsInVzZXJuYW1lIjoiZmI0MGNkYjU2N2VmNGMxODkw%0D%0AMzg0OTA4MjljMjBlNmYifQ%3D%3D";
+    const share = "eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJHcmFoYW1fUHJvZmVzc2lvbmFsTG9vazJf%0D%0AcHVibGljIiwicHJldmlld0ltZyI6Imh0dHBzOi8vZmlsZXMyLmhleWdlbi5haS9hdmF0YXIvdjMv%0D%0AZmY1MGY4NzRkODIxNDAwY2JhZWZkZTlmZjkyYjZhNzNfNTU4NTAvcHJldmlld190YWxrXzEud2Vi%0D%0AcCIsIm5lZWRSZW1vdmVCYWNrZ3JvdW5kIjp0cnVlLCJrbm93bGVkZ2VCYXNlSWQiOiIwN2FjZTY4%0D%0AYjMxZmU0MDM1OTFkZDRjZGNhOTM4ZDY5ZiIsInVzZXJuYW1lIjoiZmI0MGNkYjU2N2VmNGMxODkw%0D%0AMzg0OTA4MjljMjBlNmYifQ%3D%3D";
 
+    // Parametro inIFrame=1 per compatibilità embed
     const src = host + "/guest/streaming-embed?share=" + share + "&inIFrame=1";
 
     const frame = document.getElementById("aiFrame");
     frame.src = src;
 
+    // Ricarica “pulita”
     document.getElementById("reloadBtn").addEventListener("click", () => {
       frame.src = src + "&t=" + Date.now();
     });
   </script>
-
 </body>
 </html>
