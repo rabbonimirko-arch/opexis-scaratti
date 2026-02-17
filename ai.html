@@ -12,7 +12,9 @@
       --line:rgba(148,163,184,.22);
       --txt:#e5e7eb;
       --muted:#94a3b8;
-      --bottom-bar-h:90px; /* ⬅️ altezza cornice */
+
+      /* ⬇️ ALTEZZA BANDA NERA (MINIMA) */
+      --bottom-bar-h:36px;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -94,7 +96,7 @@
       z-index:1;
     }
 
-    /* ===== CORNICE NERA INFERIORE (COPRE HEYGEN) ===== */
+    /* ===== BANDA NERA SOTTILE (COPRE HEYGEN) ===== */
     .bottom-frame{
       position:absolute;
       left:0;
@@ -106,10 +108,10 @@
       pointer-events:none;
     }
 
-    /* Mobile tuning */
-    @media (max-width:768px){
+    /* micro-tuning mobile piccoli */
+    @media (max-width:480px){
       :root{
-        --bottom-bar-h:110px; /* ⬅️ più alta su mobile */
+        --bottom-bar-h:32px;
       }
     }
   </style>
@@ -136,7 +138,7 @@
       title="Opexis AI"
     ></iframe>
 
-    <!-- CORNICE NERA INFERIORE -->
+    <!-- BANDA NERA MINIMA -->
     <div class="bottom-frame" aria-hidden="true"></div>
   </main>
 
