@@ -14,7 +14,11 @@
       --muted:#94a3b8;
     }
 
-    *{ box-sizing:border-box; margin:0; padding:0; }
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
 
     html, body{
       width:100%;
@@ -36,6 +40,7 @@
         env(safe-area-inset-left);
     }
 
+    /* ===== TOP BAR ===== */
     .topbar{
       flex:0 0 auto;
       display:flex;
@@ -56,6 +61,7 @@
       min-width:0;
       text-align:center;
     }
+
     .brand .t1{
       font-weight:800;
       letter-spacing:.08em;
@@ -66,6 +72,7 @@
       overflow:hidden;
       text-overflow:ellipsis;
     }
+
     .brand .t2{
       font-size:10px;
       color:var(--muted);
@@ -90,14 +97,17 @@
       user-select:none;
       white-space:nowrap;
     }
-    .btn:active{ transform:translateY(1px); }
 
+    .btn:active{
+      transform:translateY(1px);
+    }
+
+    /* ===== IFRAME AREA ===== */
     .ai-wrap{
       flex:1 1 auto;
       min-height:0;
       position:relative;
       background:#000;
-      overflow:hidden; /* ✅ importante */
     }
 
     iframe{
@@ -110,23 +120,22 @@
       z-index:1;
     }
 
-    /* ✅ MASCHERA WATERMARK HEYGEN (più grande + fuori bordo) */
+    /* ===== OVERLAY MASCHERA WATERMARK HEYGEN ===== */
     .heygen-mask{
       position:absolute;
-      right:-10px;
-      bottom:-10px;
-      width:260px;     /* ⬅️ aumenta ancora se serve */
-      height:120px;    /* ⬅️ aumenta ancora se serve */
+      right:0;
+      bottom:0;
+      width:130px;
+      height:52px;
       background:#000;
-      z-index:9999;
+      z-index:5;
       pointer-events:none;
     }
 
-    /* Se vuoi, su mobile ancora più copertura */
     @media (max-width:768px){
       .heygen-mask{
-        width:300px;
-        height:150px;
+        width:150px;
+        height:60px;
       }
     }
   </style>
@@ -146,6 +155,7 @@
   </header>
 
   <main class="ai-wrap">
+    <!-- IFRAME HEYGEN FULLSCREEN -->
     <iframe
       id="aiFrame"
       title="Opexis AI – HeyGen"
@@ -153,6 +163,7 @@
       referrerpolicy="no-referrer"
     ></iframe>
 
+    <!-- MASCHERA WATERMARK HEYGEN -->
     <div class="heygen-mask" aria-hidden="true"></div>
   </main>
 
