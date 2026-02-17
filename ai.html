@@ -13,8 +13,11 @@
       --txt:#e5e7eb;
       --muted:#94a3b8;
 
-      /* ⬇️ ALTEZZA BANDA NERA (MINIMA) */
-      --bottom-bar-h:25px;
+      /* ⬇️ altezza banda nera minima */
+      --bottom-bar-h:36px;
+
+      /* ⬇️ scala avatar */
+      --avatar-scale:0.92;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -86,14 +89,24 @@
       overflow:hidden;
     }
 
-    iframe{
+    /* contenitore per scaling */
+    .iframe-scale{
       position:absolute;
       inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:1;
+    }
+
+    iframe{
       width:100%;
       height:100%;
       border:0;
       background:#000;
-      z-index:1;
+
+      transform:scale(var(--avatar-scale));
+      transform-origin:center center;
     }
 
     /* ===== BANDA NERA SOTTILE (COPRE HEYGEN) ===== */
@@ -108,7 +121,6 @@
       pointer-events:none;
     }
 
-    /* micro-tuning mobile piccoli */
     @media (max-width:480px){
       :root{
         --bottom-bar-h:32px;
@@ -131,15 +143,19 @@
   </header>
 
   <main class="ai-wrap">
-    <iframe
-      id="aiFrame"
-      allow="microphone; autoplay; clipboard-write"
-      referrerpolicy="no-referrer"
-      title="Opexis AI"
-    ></iframe>
+
+    <div class="iframe-scale">
+      <iframe
+        id="aiFrame"
+        allow="microphone; autoplay; clipboard-write"
+        referrerpolicy="no-referrer"
+        title="Opexis AI"
+      ></iframe>
+    </div>
 
     <!-- BANDA NERA MINIMA -->
     <div class="bottom-frame" aria-hidden="true"></div>
+
   </main>
 
   <script>
@@ -159,5 +175,3 @@
 
 </body>
 </html>
-
-
